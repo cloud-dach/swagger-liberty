@@ -1,0 +1,10 @@
+applications:
+- name: java-swagger-rm-123
+  env:
+    JBP_CONFIG_LIBERTY: "app_archive: {features: [jaxb-2.2,jaxrs-2.0,localConnector-1.0,servlet-3.1]}"
+    IBM_LIBERTY_BETA: "true"
+  host: java-swagger-rm-123
+  memory: 512M
+  instances: 1
+  path: target/swagger-liberty.war
+  

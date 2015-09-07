@@ -19,4 +19,5 @@ More details can be found on my [blog](http://www.mycloudtips.com/2014/10/jax-rs
 - Start the server
 - Open a browser to http://localhost:9080/swagger-liberty/
 - (Optional) push application to your IBM Bluemix account
+
  
