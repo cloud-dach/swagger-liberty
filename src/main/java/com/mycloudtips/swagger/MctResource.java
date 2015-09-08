@@ -50,7 +50,7 @@ import io.swagger.annotations.ApiResponses;
  *
  */
 @Path("/books")
-@Api(value = "/books", description = "Book management API")
+@Api(value = "/books")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class MctResource {
