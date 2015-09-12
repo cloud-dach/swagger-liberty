@@ -28,6 +28,12 @@ import javax.ws.rs.core.Application;
 //import io.swagger.jaxrs.listing.ApiListingResource;
 //import io.swagger.jaxrs.listing.SwaggerSerializers;
 
+
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 /**
  * This is the entry point to configure the REST application. It is referenced
  * in the web.xml.
@@ -43,10 +49,19 @@ public class MctApplication extends Application {
         beanConfig.setVersion("1.0");
         beanConfig.setTitle("Books API");
         beanConfig.setDescription("Simple Books API");
-        beanConfig.setSchemes(new String[]{"http"});
+        beanConfig.setSchemes(new String[]{"http","https"});
         beanConfig.setBasePath("/swagger-liberty/rest");
         beanConfig.setResourcePackage("io.swagger.resources,com.mycloudtips.swagger");
         beanConfig.setScan(true);
+        //try to get the host
+        try {
+			JSONObject json = parseVcap("VCAP_APPLICATION");
+			JSONArray msg = (JSONArray) json.get("uris");
+			beanConfig.setHost(msg.get(0).toString());
+        } catch (Exception e) {
+			// we are not in the cloud so there is no reliable way in the current context to get Host and Port
+        	e.printStackTrace();
+        }
 	}
 	
 	@Override
@@ -64,5 +79,17 @@ public class MctApplication extends Application {
 		singletons.add(new MctResource());
 		return singletons;
 	}
-
+	
+	public static JSONObject parseVcap(String val) throws Exception {  
+	    
+		String vcap = System.getenv(val);  
+	    if (vcap == null) {  
+	        return null;  
+	    }  
+	    JSONObject jsonObject = null;  
+	    JSONParser parser = new JSONParser();  
+	    Object obj = parser.parse(vcap);  
+	    jsonObject = (JSONObject) obj;  
+	    return jsonObject;  
+	}
 }
