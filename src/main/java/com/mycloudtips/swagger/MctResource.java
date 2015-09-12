@@ -125,5 +125,4 @@ public class MctResource {
 	public void deleteBook(@PathParam("id") String id) {
 		library.remove(id);
 	}
-
 }
