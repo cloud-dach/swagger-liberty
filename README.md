@@ -2,7 +2,7 @@
 This is a modified version of the Swagger JAX-RS example using using IBM WebSphere Liberty Application Server on IBM Bluemix. The example can be pushed to IBM Bluemix, see example manifest.yml for the CF Java build pack parameters to enable the right features for that application.
 The original Tutorial can be found here [blog](http://www.mycloudtips.com/2014/10/jax-rs-swagger-liberty-bluemix.html)
 # Modifications
-- converted to Maven project
+- changed to raw Maven project
 - updated to Swagger 2.0 and JAX-RS 2.0 specs
 - eliminated web.xml
 - updated swagger ui components
