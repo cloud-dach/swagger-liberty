@@ -52,27 +52,17 @@ public class MctApplication extends Application {
 	@Override
     public Set<Class<?>> getClasses() {
         Set<Class<?>> resources = new HashSet();
-
-        //resources.add(FirstResource.class);
-        //resources.add(SecondResource.class);
-        //...
-
         resources.add(io.swagger.jaxrs.listing.ApiListingResource.class);
         resources.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
-
         return resources;
     }
 
 	@Override
 	public Set<Object> getSingletons() {
-
 		Set<Object> singletons = new HashSet<Object>();
-
 		// this is the application resource, declared as a singleton
 		singletons.add(new MctResource());
-
 		return singletons;
-
 	}
 
 }
