@@ -59,8 +59,8 @@ public class MctResource {
 	ConcurrentHashMap<String, MctBook> library = new ConcurrentHashMap<String, MctBook>();
 
 	@GET
-	@ApiOperation(value = "Returns the list of books from the library.", response = MctBook.class, responseContainer = "List")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "OK"),
+	@ApiOperation(value = "Returns the list of books from the library.")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "OK",response = MctBook.class, responseContainer = "List"),
 			@ApiResponse(code = 500, message = "Internal error") })
 	public Collection<MctBook> getBooks() {
 		return library.values();
@@ -90,8 +90,8 @@ public class MctResource {
 
 	@Path("/{id}")
 	@GET
-	@ApiOperation(value = "Returns an existing book from the library.", response = MctBook.class)
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "OK"),
+	@ApiOperation(value = "Returns an existing book from the library.")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "OK",response = MctBook.class),
 			@ApiResponse(code = 404, message = "Book not found"),
 			@ApiResponse(code = 500, message = "Internal error") })
 	public MctBook getBook(@PathParam("id") String id) {
