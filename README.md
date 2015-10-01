@@ -1,23 +1,20 @@
-# swagger-liberty
+# swagger-liberty 2.0
+This is a modified version of the Swagger JAX-RS example using using IBM WebSphere Liberty Application Server on IBM Bluemix. The example can be pushed to IBM Bluemix, see example manifest.yml for the CF Java build pack parameters to enable the right features for that application.
+The original Tutorial can be found here [blog](http://www.mycloudtips.com/2014/10/jax-rs-swagger-liberty-bluemix.html)
+# Modifications
+- changed to raw Maven project
+- updated to Swagger 2.0 and JAX-RS 2.0 specs
+- eliminated web.xml
+- updated swagger ui components
+- fixed annotations and swagger spec to comply with IBM API Management swagger import
+- use CF_APPLICATION env to get hostname for swagger.json when running on Bluemix
+- provided sample manifest.yml with Java Build Pack options to get it running on IBM Bluemix
 
-
-This project shows how to define a Swagger JAX-RS REST API using IBM WebSphere Liberty Application Server. The server can also be pushed to IBM Bluemix PaaS as an optional step.
-More details can be found on my [blog](http://www.mycloudtips.com/2014/10/jax-rs-swagger-liberty-bluemix.html)
-
-## Prerequisites
-
-- Eclipse Luna
-- [liberty profile in Eclipse] (https://developer.ibm.com/wasdev/downloads/liberty-profile-using-eclipse/)
-- JDK 1.7
- 
 ## Steps
-
-- Import the project into Eclipse
-- Create a new WebSphere ApplicationServer V8.5 Liberty profile
-- Paste the server property file from deploy/server.xml to your Liberty profile
-- Add the swagger-liberty application to the server
-- Start the server
-- Open a browser to http://localhost:9080/swagger-liberty/
-- (Optional) push application to your IBM Bluemix account
+- build the project with mvn package or in Eclipse
+- adopt hostname and application name in manifest.yml
+- cf login, cf push to push the app to bluemix
+- access the URL of the app and append /swagger-liberty 
+- you should now see the swagger ui with the correct URI to swagger.json
 
  
