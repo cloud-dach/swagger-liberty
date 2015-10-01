@@ -30,17 +30,10 @@
   <script type="text/javascript">
     $(function () {
       
-      //var url = "swagger-liberty/rest/swagger.json";	
-      var url = window.location.protocol+"//" + window.location.host+"/swagger-liberty/rest/swagger.json";
-      /*
-      var url = 
-    	  window.location.search.match(/url=([^&]+)/);
-      if (url && url.length > 1) {
-        url = decodeURIComponent(url[1]);
-      } else {
-        url = "http://petstore.swagger.io/v2/swagger.json";
-      }*/
-
+      var href = window.location.href;
+      var url = href.replace('/index.htm', '');
+      url = url.replace(/\/$/, '');
+      url = url + "/rest/swagger.json"
       // Pre load translate...
       if(window.SwaggerTranslator) {
         window.SwaggerTranslator.translate();

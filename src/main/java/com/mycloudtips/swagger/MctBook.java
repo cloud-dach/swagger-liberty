@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * An simple model object used in the API.
  * 
- * @author Michel Jaczynski
+ * @author Michel Jaczynski, Rene Meyer
  *
  */
 public class MctBook {

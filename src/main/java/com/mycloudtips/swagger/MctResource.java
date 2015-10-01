@@ -46,7 +46,7 @@ import io.swagger.annotations.ApiResponses;
 /**
  * The JAX-RS resource.
  * 
- * @author Michel Jaczynski
+ * @author Michel Jaczynski, Rene Meyer
  *
  */
 @Path("/books")

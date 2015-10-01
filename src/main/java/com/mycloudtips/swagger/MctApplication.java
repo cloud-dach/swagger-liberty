@@ -24,9 +24,11 @@ import io.swagger.jaxrs.config.BeanConfig;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 //import io.swagger.jaxrs.listing.ApiListingResource;
 //import io.swagger.jaxrs.listing.SwaggerSerializers;
+
 
 
 
@@ -38,11 +40,14 @@ import org.json.simple.parser.JSONParser;
  * This is the entry point to configure the REST application. It is referenced
  * in the web.xml.
  * 
- * @author Michel Jaczynski
+ * @author Michel Jaczynski, Rene Meyer
  *
  */
+
+@ApplicationPath("/rest")
 public class MctApplication extends Application {
 
+	
 	public MctApplication() {
 		// TODO Auto-generated constructor stub
 		BeanConfig beanConfig = new BeanConfig();
@@ -50,7 +55,7 @@ public class MctApplication extends Application {
         beanConfig.setTitle("Books API");
         beanConfig.setDescription("Simple Books API");
         beanConfig.setSchemes(new String[]{"http","https"});
-        beanConfig.setBasePath("/swagger-liberty/rest");
+        beanConfig.setBasePath("/rest");
         beanConfig.setResourcePackage("io.swagger.resources,com.mycloudtips.swagger");
         beanConfig.setScan(true);
         //try to get the host
@@ -58,9 +63,10 @@ public class MctApplication extends Application {
 			JSONObject json = parseVcap("VCAP_APPLICATION");
 			JSONArray msg = (JSONArray) json.get("uris");
 			beanConfig.setHost(msg.get(0).toString());
+        	System.out.println("We are in a CF Cloud, the uri is " + beanConfig.getHost());
         } catch (Exception e) {
 			// we are not in the cloud so there is no reliable way in the current context to get Host and Port
-        	e.printStackTrace();
+        	System.err.println("We are not in a CF Cloud");
         }
 	}
 	
