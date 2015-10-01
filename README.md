@@ -14,7 +14,7 @@ The original Tutorial can be found here [blog](http://www.mycloudtips.com/2014/1
 - build the project with mvn package or in Eclipse
 - adopt hostname and application name in manifest.yml
 - cf login, cf push to push the app to bluemix
-- access the URL of the app and append /swagger-liberty 
+- access the URL of the app
 - you should now see the swagger ui with the correct URI to swagger.json
 
  
